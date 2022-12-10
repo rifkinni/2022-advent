@@ -18,7 +18,7 @@ fun main() {
     }
 
     // test if implementation meets criteria from the description, like:
-    data class TestCase(val index: Int, val part1: Int, val part2: Int)
+
     val testCases = listOf(
         TestCase(0, 7, 19),
         TestCase(1, 5, 23),
