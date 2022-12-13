@@ -1,14 +1,14 @@
 import kotlin.math.abs
 
-data class Coordinate(var x: Int, var y: Int) {
-    private fun isTouching(other: Coordinate): Boolean {
+data class Coordinate9(var x: Int, var y: Int) {
+    private fun isTouching(other: Coordinate9): Boolean {
         if (abs(this.x - other.x) <= 1 && abs(this.y - other.y) <= 1) {
             return true
         }
         return false
     }
 
-    fun follow(lead: Coordinate) {
+    fun follow(lead: Coordinate9) {
         if (isTouching(lead)) { return }
 
         val deltaX = lead.x - this.x
@@ -29,17 +29,17 @@ data class Coordinate(var x: Int, var y: Int) {
 }
 
 class Rope(size: Int) {
-    private val head = Coordinate(0, 0)
-    private val knots: List<Coordinate>
-    val tail: Coordinate
+    private val head = Coordinate9(0, 0)
+    private val knots: List<Coordinate9>
+    val tail: Coordinate9
 
     init {
-        knots = (0 until size - 1).map { Coordinate(0, 0) }
+        knots = (0 until size - 1).map { Coordinate9(0, 0) }
         tail = knots.last()
     }
 
     fun parseInstructions(input: List<String>): Int {
-        val tails: MutableSet<Coordinate> = mutableSetOf(tail.copy())
+        val tails: MutableSet<Coordinate9> = mutableSetOf(tail.copy())
 
         for (line in input) {
             val (symbol, stepString ) = line.split(" ")
@@ -69,7 +69,7 @@ enum class Direction(val symbol: Char) {
     LEFT('L'),
     RIGHT('R');
 
-    fun move(coordinate: Coordinate) {
+    fun move(coordinate: Coordinate9) {
         when(this) {
             UP -> coordinate.y ++
             DOWN -> coordinate.y --
